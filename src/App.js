@@ -1,3 +1,13 @@
+//Pseudocode
+//Creating a step counter:
+// 3 components
+// 1. Step counter with + and - button
+// should increment by one
+// 2. Count counter with + and - button
+// should increment by the number set with the Step counter. (i.e. if 2, then Count increments by 2, if 5, then count increments by 5, etc...)
+// 3. Message component with {state} days from today is x number of days based on the counter
+// look up javascript how to add days to date
+
 import { useState } from "react";
 import "./index.css";
 
@@ -10,12 +20,12 @@ export default function App() {
 }
 
 function Counter() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
   const [dateCount, setDateCount] = useState(step);
 
   const today = new Date();
-  const futureDate = new Date();
-  futureDate.setDate(today.getDate() + dateCount);
+  const newDate = new Date();
+  newDate.setDate(today.getDate() + dateCount);
 
   function subtractStep() {
     if (step > 1) setStep((s) => s - 1);
@@ -26,7 +36,7 @@ function Counter() {
   }
 
   function substractCount() {
-    if (dateCount >= 1) setDateCount((c) => c - step);
+    setDateCount((c) => c - step);
   }
 
   function addDateCount() {
@@ -53,21 +63,20 @@ function Counter() {
 
       <div className="date-message">
         <p>
-          {dateCount >= 1
-            ? `${dateCount} days from today is ${futureDate.toDateString()}`
-            : `Today is ${futureDate.toDateString()}`}
+          <span>
+            {dateCount === 0
+              ? "Today is "
+              : dateCount === 1
+                ? `${dateCount} day from today is `
+                : dateCount > 1
+                  ? `${dateCount} days from today is `
+                  : dateCount === -1
+                    ? `${Math.abs(dateCount)} day ago was `
+                    : `${Math.abs(dateCount)} days ago was `}
+          </span>
+          <span>{newDate.toDateString()}</span>
         </p>
       </div>
     </div>
   );
 }
-
-//Pseudocode
-//Creating a step counter:
-// 3 components
-// 1. Step counter with + and - button
-// should increment by one
-// 2. Count counter with + and - button
-// should increment by the number set with the Step counter. (i.e. if 2, then Count increments by 2, if 5, then count increments by 5, etc...)
-// 3. Message component with {state} days from today is x number of days based on the counter
-// look up javascript how to add days to date
