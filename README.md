@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+## What I Learned
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a coding challenge I tackled in my course and was able to successfully reach the desired outcome for full functionality.
 
-## Available Scripts
+In this challenge, I built a simple date counter application using React state. The app allows the user to increase or decrease a `step` value, then use that step value to update a separate count. The count is then used to calculate a date either in the future or in the past.
 
-In the project directory, you can run:
+Through this project, I practiced using the `useState` hook to manage multiple pieces of state inside a component. The `step` state controls how much the count should increase or decrease, while the `dateCount` state keeps track of how many days away from today the displayed date should be.
 
-### `npm start`
+I also practiced using callback functions when updating state, such as:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```js
+setStep((s) => s + 1);
+setDateCount((c) => c - step);
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This helped reinforce the pattern of updating state based on the current state value.
 
-### `npm test`
+Another key part of this challenge was working with JavaScript dates. I used the `Date` object to get today’s date, then used `setDate()` and `getDate()` to add or subtract days based on the current count.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```js
+const today = new Date();
+const newDate = new Date();
+newDate.setDate(today.getDate() + dateCount);
+```
 
-### `npm run build`
+I also used `.toDateString()` to format the final date in a readable format.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Finally, I practiced conditional rendering in JSX using a nested ternary expression. Though it is a little messy, I found it useful for this scenario - it allowed the message to change depending on whether the selected date was today, in the future, or in the past. I also used `Math.abs()` to remove the negative sign when displaying past dates, so the message would say `1 day ago` instead of `-1 day ago`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Overall, this challenge helped me better understand how React state, event handlers, conditional rendering, and basic JavaScript date logic can work together to create an interactive user interface.
