@@ -10,8 +10,8 @@ export default function App() {
 }
 
 function Counter() {
-  const [step, setStep] = useState(0);
-  const [dateCount, setDateCount] = useState(step);
+  const [step, setStep] = useState(1);
+  const [dateCount, setDateCount] = useState(0);
 
   const today = new Date();
   const newDate = new Date();
