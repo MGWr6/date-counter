@@ -1,13 +1,3 @@
-//Pseudocode
-//Creating a step counter:
-// 3 components
-// 1. Step counter with + and - button
-// should increment by one
-// 2. Count counter with + and - button
-// should increment by the number set with the Step counter. (i.e. if 2, then Count increments by 2, if 5, then count increments by 5, etc...)
-// 3. Message component with {state} days from today is x number of days based on the counter
-// look up javascript how to add days to date
-
 import { useState } from "react";
 import "./index.css";
 
@@ -46,6 +36,7 @@ function Counter() {
   return (
     <div className="counter">
       <div>
+        <input type="range" min="0" max="10"></input>
         <div className="step-counter">
           <button onClick={subtractStep}>-</button>
           <p>Step: {step}</p>
